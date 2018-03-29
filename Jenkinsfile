@@ -21,7 +21,9 @@ pipeline {
 
         stage('Gradle Build') {
             steps {
-                build()
+                sh "ls -l"
+                //sh "rm -rf target"
+                sh "./gradlew bootJar"
             }
         }
 
@@ -37,10 +39,4 @@ pipeline {
 
 
     }
-}
-
-def build() {
-    sh "ls -l"
-    //sh "rm -rf target"
-    sh "./gradlew bootJar"
 }
