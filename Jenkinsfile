@@ -1,5 +1,5 @@
 node {
-
+  
     checkout scm
 
     commit_id = sh(script: 'git rev-parse --verify HEAD', returnStdout: true).trim()
