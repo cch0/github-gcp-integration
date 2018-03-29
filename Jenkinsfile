@@ -35,7 +35,7 @@ pipeline {
             }
 
             steps {
-                sh 'gcloud docker'
+                sh 'gcloud docker -- push us.gcr.io/square-trade/acme-server'
             }
         }
 
