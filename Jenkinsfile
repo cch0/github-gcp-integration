@@ -8,8 +8,6 @@ pipeline {
         stage('Prepare') {
             steps {
                 script {
-                    //checkout scm
-
                     echo "Build triggered via branch: ${env.BRANCH_NAME}"
 
                     env.commit_id = sh(script: 'git rev-parse --verify HEAD', returnStdout: true).trim()
