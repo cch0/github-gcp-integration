@@ -10,8 +10,6 @@ pipeline {
                 script {
                     checkout scm
 
-                    sh "whoami"
-
                     echo "Build triggered via branch: ${env.BRANCH_NAME}"
 
                     env.commit_id = sh(script: 'git rev-parse --verify HEAD', returnStdout: true).trim()
@@ -25,8 +23,6 @@ pipeline {
 
         stage('Gradle Build') {
             steps {
-                sh "ls -l"
-                //sh "rm -rf target"
                 sh "./gradlew bootJar"
             }
         }
@@ -42,6 +38,14 @@ pipeline {
             }
         }
 
+        stage('Deploy') {
+            when {
+                branch 'master'
+            }
 
+            steps {
+                sh 'gcloud app deploy'
+            }
+        }
     }
 }
