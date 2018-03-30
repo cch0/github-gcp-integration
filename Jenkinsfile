@@ -8,7 +8,7 @@ pipeline {
         stage('Prepare') {
             steps {
                 script {
-                    checkout scm
+                    //checkout scm
 
                     echo "Build triggered via branch: ${env.BRANCH_NAME}"
 
