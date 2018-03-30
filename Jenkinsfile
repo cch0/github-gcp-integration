@@ -27,16 +27,16 @@ pipeline {
             }
         }
 
-        //stage('Docker Build') {
-            //when {
-            //    branch 'master'
-            //}
+        stage('Docker Build') {
+            when {
+                branch 'master'
+            }
 
-            //steps {
-                //sh 'docker build -t us.gcr.io/square-trade/acme-server .'
-                //sh 'gcloud docker -- push us.gcr.io/square-trade/acme-server'
-            //}
-        //}
+            steps {
+                sh 'docker build -t us.gcr.io/square-trade/acme-server .'
+                sh 'gcloud docker -- push us.gcr.io/square-trade/acme-server'
+            }
+        }
 
         stage('Deploy') {
             when {
